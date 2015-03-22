@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>London Datastore Mean Bike Hire Application</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  
+  <style>
+.reveal h3 {
+    color: #c1d192;
+    text-align: left;
+    padding-bottom: 10px;
+    font-family: Impact, sans-serif;
+}
+</style>
+
+<h2>Introduction</h2>
+
+<p>The following slides cover the following</p>
+
+<ul>
+<li>Data set on which application is based </li>
+<li>Intent of application</li>
+<li>Brief description of code</li>
+<li>Brief Description of use</li>
+</ul>
+
+</section>
+<section class='class' data-state='' id='id'>
+  <h2>Data set for application</h2>
+  <p><img src="bikeimage.jpg" alt="Barclays Hire Bike"></p>
+
+<ul>
+<li>Taken from <a href="http://data.london.gov.uk/">London Data Store</a>, data sets available under the <a href="OGL">UK Open Government Licence</a> </li>
+<li>This dataset is for the <a href="http://data.london.gov.uk/dataset/number-bicycle-hires/resource/e7084341-d2ce-4a13-8859-cbae32106ed1">Barclays Cycle Hire Scheme</a> data set</li>
+</ul>
+
+</section>
+<section class='class' data-state='' id='id'>
+  <h2>Intent</h2>
+  <ul>
+<li>Allow the mean number of bike hires to be seen based on date ranges (from launch date to Feb 2015)</li>
+<li>Can see overall bike hires over bike hire history in plot </li>
+<li>Rough tool to give indication mean bike hires throughout date range</li>
+<li>Future iterations of app could predict bike availability based on date</li>
+</ul>
+
+</section>
+<section class='class' data-state='' id='id'>
+  <h2>Code usage</h2>
+  <ul>
+<li>Hardcoded date example below for March 2012 for indicative usage</li>
+</ul>
+
+<pre><code class="r">   hiredates &lt;- subset(cycledata, Day &gt;= &#39;2012/03/01&#39;)
+   hiredates &lt;- subset(hiredates, Day &lt;= &#39;2012/03/31&#39;)
+   print(&quot;The (rounded to full number) mean bike hire for your date range is : &quot;) 
+</code></pre>
+
+<pre><code>## [1] &quot;The (rounded to full number) mean bike hire for your date range is : &quot;
+</code></pre>
+
+<pre><code class="r">   round(mean(hiredates$dailybikehires),0)
+</code></pre>
+
+<pre><code>## [1] 26394
+</code></pre>
+
+</section>
+<section class='class' data-state='' id='id'>
+  <h2>Application usage</h2>
+  <p><img src="shinyimage.jpg" alt="Shiny Example"></p>
+
+<ul>
+<li>Choose start and end date. </li>
+<li>Side panel updates reactively with date range chosen</li>
+<li>Mean bike hires (rounded) for date range shown in main panel</li>
+</ul>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'default', 
+    transition: Reveal.getQueryHash().transition || 'default', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>

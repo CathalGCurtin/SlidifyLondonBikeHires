@@ -1,0 +1,9 @@
+base
+DBI
+gsubfn
+proto
+RSQLite
+shiny
+shinyapps
+slidify
+sqldf
