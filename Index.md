@@ -57,9 +57,11 @@ The following slides cover the following
 
 
 ```r
-   hiredates <- subset(cycledata, Day >= '2012/03/01')
-   hiredates <- subset(hiredates, Day <= '2012/03/31')
-   print("The (rounded to full number) mean bike hire for your date range is : ") 
+   start_date <- as.Date('2012/03/01', '%Y/%m/%d')
+   end_date   <- as.Date('2012/03/31', '%Y/%m/%d')
+   hiredates  <- subset(cycledata, Day >= start_date)
+   hiredates  <- subset(hiredates, Day <= end_date)
+   print("The (rounded to full number) mean bike hire for your date range is : ")
 ```
 
 ```
