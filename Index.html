@@ -67,9 +67,11 @@
 <li>Hardcoded date example below for March 2012 for indicative usage</li>
 </ul>
 
-<pre><code class="r">   hiredates &lt;- subset(cycledata, Day &gt;= &#39;2012/03/01&#39;)
-   hiredates &lt;- subset(hiredates, Day &lt;= &#39;2012/03/31&#39;)
-   print(&quot;The (rounded to full number) mean bike hire for your date range is : &quot;) 
+<pre><code class="r">   start_date &lt;- as.Date(&#39;2012/03/01&#39;, &#39;%Y/%m/%d&#39;)
+   end_date   &lt;- as.Date(&#39;2012/03/31&#39;, &#39;%Y/%m/%d&#39;)
+   hiredates  &lt;- subset(cycledata, Day &gt;= start_date)
+   hiredates  &lt;- subset(hiredates, Day &lt;= end_date)
+   print(&quot;The (rounded to full number) mean bike hire for your date range is : &quot;)
 </code></pre>
 
 <pre><code>## [1] &quot;The (rounded to full number) mean bike hire for your date range is : &quot;
