@@ -1,0 +1,17 @@
+testthat::test_that("server updates summaries and validates dates", {
+  shiny::testServer(make_server(historical), {
+    session$setInputs(dates = as.Date(c("2010-07-30", "2015-02-28")))
+    testthat::expect_equal(selection()$days, 1675L)
+    session$setInputs(dates = as.Date(c("2012-03-01", "2012-03-31")))
+    testthat::expect_equal(output$mean_hires, "26,394")
+    testthat::expect_match(output$selected_range, "31 days")
+    session$setInputs(dates = as.Date(c("2012-03-31", "2012-03-01")))
+    testthat::expect_error(output$mean_hires, "on or before")
+    session$setInputs(dates = as.Date(c(NA, "2012-03-01")))
+    testthat::expect_error(output$mean_hires, "Choose both")
+    session$setInputs(dates = as.Date(c("2010-07-29", "2012-03-01")))
+    testthat::expect_error(output$mean_hires, "within")
+    session$setInputs(dates = as.Date(c("2010-07-30", "2010-07-30")))
+    testthat::expect_equal(output$mean_hires, "6,897")
+  })
+})
