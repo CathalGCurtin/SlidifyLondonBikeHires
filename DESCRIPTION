@@ -1,0 +1,17 @@
+Type: Project
+Title: Historical London Bike Hires Application and Slides
+Version: 1.0.0
+Description: A Shiny application and Quarto presentation sharing validated
+    calculations over the original 2010-2015 daily cycle hire dataset.
+Imports:
+    shiny,
+    bslib
+Suggests:
+    renv,
+    knitr,
+    rmarkdown,
+    testthat,
+    shinytest2,
+    chromote,
+    jsonlite,
+    xml2

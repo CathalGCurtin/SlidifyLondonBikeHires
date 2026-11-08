@@ -41,3 +41,16 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Local tools, rendering output, and test artifacts
+.tools/
+.cache/
+.quarto/
+index_files/
+index_cache/
+.Rhistory
+.RData
+.Rproj.user/
+renv/library/
+renv/staging/
+tests/testthat/_snaps/
